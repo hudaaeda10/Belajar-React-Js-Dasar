@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import HelloWorldComponent from "./components/HelloWorldComponent";
-import StateFullComponent from "./container/StateFullComponent";
+import Home from "./container/Home/Home";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HelloWorldComponent />
+    <Home />
   </React.StrictMode>,
   document.getElementById("root")
 );
