@@ -20,16 +20,24 @@ class LifeCycleComp extends Component {
   //   menjalanakan didmount setelah menjalankan render dan step terakhir ketiak mounting
   componentDidMount() {
     console.log("componentDidMount");
-    setTimeout(() => {
-      this.setState({
-        count: 2,
-      });
-    }, 3000);
+    // setTimeout(() => {
+    //   this.setState({
+    //     count: 2,
+    //   });
+    // }, 3000);
   }
 
   //   kemudian jika terjadi update maka menjalankan step berikut
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("shouldComponentUpdate");
+    // untuk mengatur updatean pada component bisa atau tidak dilakukan dengan menggunakan parameter function ini
+    console.group("shouldComponentUpdate");
+    // console.log("nextProps", nextProps);
+    console.log("nextState", nextState); // state count sesudah di update
+    console.log("thisState", this.state); // state sebelum di ubah
+    console.groupEnd();
+    if (this.state.count >= 4) {
+      return false;
+    }
     return true;
   }
 
@@ -49,11 +57,20 @@ class LifeCycleComp extends Component {
     console.log("componentWillUnmount");
   }
 
+  // function yang merubah count
+  changeCount = () => {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  };
+
   render() {
     console.log("render");
     return (
       <div>
-        <button className="btn">Component Button {this.state.count}</button>
+        <button className="btn" onClick={this.changeCount}>
+          Component Button {this.state.count}
+        </button>
       </div>
     );
   }

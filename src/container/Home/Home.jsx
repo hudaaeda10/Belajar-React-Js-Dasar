@@ -4,6 +4,19 @@ import LifeCycleComp from "../LifeCyleComp/LifeCycleComp";
 // import Product from "../Product/Product";
 
 class Home extends Component {
+  state = {
+    showComponents: true,
+  };
+
+  componentDidMount() {
+    // console.log("componentDidMount");
+    // setTimeout(() => {
+    //   this.setState({
+    //     showComponents: false,
+    //   });
+    // }, 15000);
+  }
+
   render() {
     return (
       <div>
@@ -17,10 +30,9 @@ class Home extends Component {
         {/* <p>Product</p>
         <hr />
         <Product /> */}
-
         <p>Life Cycle</p>
         <hr />
-        <LifeCycleComp />
+        {this.state.showComponents ? <LifeCycleComp /> : null}
       </div>
     );
   }
